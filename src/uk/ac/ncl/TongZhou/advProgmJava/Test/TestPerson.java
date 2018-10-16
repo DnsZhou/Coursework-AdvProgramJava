@@ -7,6 +7,10 @@ import org.junit.jupiter.api.Test;
 
 import uk.ac.ncl.TongZhou.advProgmJava.Entity.Person;
 
+/**
+ * @author Tong Zhou b8027512@ncl.ac.uk
+ * @created: 14 Oct 2018 17:15:56
+ */
 class TestPerson {
 
 	@BeforeEach
