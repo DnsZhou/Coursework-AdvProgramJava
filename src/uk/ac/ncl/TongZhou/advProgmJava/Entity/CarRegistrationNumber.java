@@ -26,11 +26,25 @@ public final class CarRegistrationNumber {
 	private final String comp1;
 	private final String comp2;
 
+	/**   
+	 * @Title: Constructor for CarRegistrationNumber   
+	 * @param comp1
+	 * @param comp2 
+	 */  
 	private CarRegistrationNumber(String comp1, String comp2) {
+		super();
 		this.comp1 = comp1;
 		this.comp2 = comp2;
 	}
+	
 
+	
+	/**   
+	 * @Title: getInstance   
+	 * @param String carRegistrationNumber
+	 * @throws IllegalArgumentException      
+	 * @return: CarRegistrationNumber      
+	 */
 	public CarRegistrationNumber getInstance(String carRegistrationNumber) throws IllegalArgumentException {
 		if (allCarRegistrationNumbers == null)
 			allCarRegistrationNumbers = new HashMap<String, CarRegistrationNumber>();
@@ -54,6 +68,18 @@ public final class CarRegistrationNumber {
 			
 		}
 		return crn;
+	}
+	
+	
+	/**   
+	 * @Title: toString 
+	 * @Description: 
+	 * @return   
+	 * @see java.lang.Object#toString()   
+	 */
+	@Override
+	public String toString() {
+		return "CarRegistrationNumber [comp1=" + comp1 + ", comp2=" + comp2 + "]";
 	}
 
 	private boolean validateCarRegNumber(String carRegistrationNumber) {

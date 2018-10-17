@@ -21,8 +21,7 @@ public class Person {
 	private Date dateOfBirth;
 
 	/**
-	 * @Title: Person
-	 * @Description: 
+	 * @Title: Constructor for Person
 	 * @param firstName
 	 * @param lastName
 	 * @param date
