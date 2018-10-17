@@ -9,7 +9,8 @@ import java.sql.Date;
 
 /**
  * @ClassName: DrivingLicence 
- * @Description: 
+ * @Description: A driving licence has a unique number, a date of issue, and an indication whether the licence is a full
+ * driving licence or not.
  * 
  */
 public class DrivingLicence {

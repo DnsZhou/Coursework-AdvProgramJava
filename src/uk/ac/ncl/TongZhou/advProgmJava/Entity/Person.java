@@ -5,49 +5,76 @@
  */
 package uk.ac.ncl.TongZhou.advProgmJava.Entity;
 
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 /**
- * @ClassName: Person 
- * @Description: 
+ * @ClassName: Person
+ * @Description: A person (or customer) with name and a date of birth.
  * 
  */
 public class Person {
 	private String firstName;
 	private String lastName;
-	
-	/** 
+	private Date dateOfBirth;
+
+	/**
+	 * @Title: Person
+	 * @Description: 
+	 * @param firstName
+	 * @param lastName
+	 * @param date
+	 * @throws IllegalArgumentException
+	 */
+	public Person(String firstName, String lastName, Date date) throws IllegalArgumentException {
+		super();
+		if (firstName == null || lastName == null || date == null)
+			throw new IllegalArgumentException("Negative First Name, Last Name or Date of Birth");
+		this.firstName = firstName;
+		this.lastName = lastName;
+
+		// for immutable purpose.
+		this.dateOfBirth = new Date(date.getTime());
+	}
+
+	/**
 	 * Return the firstName.
 	 *
-	 * @return firstName 
+	 * @return firstName
 	 */
 	public String getFirstName() {
 		return firstName;
 	}
-	
-	/** 
-	 * Set the value of firstName
-	 *
-	 * @param firstName: firstName to be set.
-	 */
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-	
-	/** 
+
+	/**
 	 * Return the lastName.
 	 *
-	 * @return lastName 
+	 * @return lastName
 	 */
 	public String getLastName() {
 		return lastName;
 	}
-	
-	/** 
-	 * Set the value of lastName
+
+	/**
+	 * Return the dateOfBirth.
 	 *
-	 * @param lastName: lastName to be set.
+	 * @return dateOfBirth
 	 */
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public Date getDateOfBirth() {
+		return dateOfBirth;
 	}
 
+	/**
+	 * @Title: toString
+	 * @Description:
+	 * @return
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", dateOfBirth="
+				+ DateFormat.getDateInstance().format(dateOfBirth) + "]";
+	}
 }
