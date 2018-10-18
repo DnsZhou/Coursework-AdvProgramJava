@@ -45,7 +45,7 @@ public final class CarRegistrationNumber {
 	 * @throws IllegalArgumentException      
 	 * @return: CarRegistrationNumber      
 	 */
-	public CarRegistrationNumber getInstance(String carRegistrationNumber) throws IllegalArgumentException {
+	public static CarRegistrationNumber getInstance(String carRegistrationNumber) throws IllegalArgumentException {
 		if (allCarRegistrationNumbers == null)
 			allCarRegistrationNumbers = new HashMap<String, CarRegistrationNumber>();
 
@@ -82,8 +82,8 @@ public final class CarRegistrationNumber {
 		return "CarRegistrationNumber [comp1=" + comp1 + ", comp2=" + comp2 + "]";
 	}
 
-	private boolean validateCarRegNumber(String carRegistrationNumber) {
-		Pattern p = Pattern.compile("\\[A-Za-z]{2}\\d{2}\\s*\\[A-Za-z]{3}");
+	private static boolean validateCarRegNumber(String carRegistrationNumber) {
+		Pattern p = Pattern.compile("[A-Z]{2}\\d{2}\\s*[A-Z]{3}");
 		return p.matcher(carRegistrationNumber).matches();
 	}
 }
