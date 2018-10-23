@@ -4,7 +4,7 @@
  * @author: Tong Zhou b8027512@ncl.ac.uk
  * @created: 23:48 16-10-2018
  */
-package uk.ac.ncl.TongZhou.advProgmJava.Test;
+package uk.ac.ncl.tongzhou.advancedjava.test;
 
 
 import static org.junit.Assert.assertEquals;
@@ -15,7 +15,7 @@ import java.util.GregorianCalendar;
 import org.junit.Before;
 import org.junit.Test;
 
-import uk.ac.ncl.TongZhou.advProgmJava.Entity.DrivingLicence;
+import uk.ac.ncl.tongzhou.advancedjava.model.DrivingLicence;
 
 /**
  * @ClassName: TestDrivingLicence
@@ -35,7 +35,7 @@ public class DrivingLicenceTest {
 
 	/**
 	 * Test method for testConstructor
-	 * {@link uk.ac.ncl.TongZhou.advProgmJava.Entity.DrivingLicence#getInstance()}.
+	 * {@link uk.ac.ncl.tongzhou.advancedjava.model.DrivingLicence#getInstance()}.
 	 * @throws Exception,IllegalArgumentException
 	 */
 	@Test
@@ -49,7 +49,7 @@ public class DrivingLicenceTest {
 	
 	/**
 	 * Test method for testDuplicatedNumber
-	 * {@link uk.ac.ncl.TongZhou.advProgmJava.Entity.DrivingLicence#getInstance()}.
+	 * {@link uk.ac.ncl.tongzhou.advancedjava.model.DrivingLicence#getInstance()}.
 	 * @throws Exception,IllegalArgumentException
 	 */
 	@Test(expected = Exception.class)
@@ -61,7 +61,7 @@ public class DrivingLicenceTest {
 	
 	/**
 	 * Test method for testNullArguments
-	 * {@link uk.ac.ncl.TongZhou.advProgmJava.Entity.DrivingLicence#getInstance()}.
+	 * {@link uk.ac.ncl.tongzhou.advancedjava.model.DrivingLicence#getInstance()}.
 	 * @throws Exception,IllegalArgumentException 
 	 */
 	@Test(expected = IllegalArgumentException.class)

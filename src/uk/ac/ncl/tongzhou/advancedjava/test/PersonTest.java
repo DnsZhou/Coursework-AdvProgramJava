@@ -4,7 +4,7 @@
  * @author: Tong Zhou b8027512@ncl.ac.uk
  * @created: 23:48 16-10-2018
  */
-package uk.ac.ncl.TongZhou.advProgmJava.Test;
+package uk.ac.ncl.tongzhou.advancedjava.test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -15,7 +15,7 @@ import java.util.GregorianCalendar;
 import org.junit.Before;
 import org.junit.Test;
 
-import uk.ac.ncl.TongZhou.advProgmJava.Entity.Person;
+import uk.ac.ncl.tongzhou.advancedjava.model.Person;
 
 /**
  * @ClassName: TestPerson
@@ -36,7 +36,7 @@ public class PersonTest {
 
 	/**
 	 * Test method for
-	 * {@link uk.ac.ncl.TongZhou.advProgmJava.Entity.Person#Person(String firstName, String lastName, Date date)}.
+	 * {@link uk.ac.ncl.tongzhou.advancedjava.model.Person#Person(String firstName, String lastName, Date date)}.
 	 */
 	@Test
 	public void testConstructorNormal() {
@@ -48,7 +48,7 @@ public class PersonTest {
 
 	/**
 	 * Test null Argument exception for
-	 * {@link uk.ac.ncl.TongZhou.advProgmJava.Entity.Person#Person(String firstName, String lastName, Date date)}.
+	 * {@link uk.ac.ncl.tongzhou.advancedjava.model.Person#Person(String firstName, String lastName, Date date)}.
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testConstructorException() {

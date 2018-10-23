@@ -3,7 +3,7 @@
  * @author: Tong Zhou b8027512@ncl.ac.uk
  * @created: 15:10 16-10-2018
  */
-package uk.ac.ncl.TongZhou.advProgmJava.Entity;
+package uk.ac.ncl.tongzhou.advancedjava.model;
 
 import java.text.DateFormat;
 import java.util.Calendar;

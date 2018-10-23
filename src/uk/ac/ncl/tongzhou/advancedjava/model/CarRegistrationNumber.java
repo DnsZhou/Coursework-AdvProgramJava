@@ -4,7 +4,7 @@
  * @author: Tong Zhou b8027512@ncl.ac.uk
  * @created: 23:52 16-10-2018
  */
-package uk.ac.ncl.TongZhou.advProgmJava.Entity;
+package uk.ac.ncl.tongzhou.advancedjava.model;
 
 import java.util.HashMap;
 import java.util.Map;
