@@ -24,18 +24,18 @@ public class Person {
 	 * @Title: Constructor for Person
 	 * @param firstName
 	 * @param lastName
-	 * @param date
+	 * @param dateOfBirth
 	 * @throws IllegalArgumentException
 	 */
-	public Person(String firstName, String lastName, Date date) throws IllegalArgumentException {
+	public Person(String firstName, String lastName, Date dateOfBirth) throws IllegalArgumentException {
 		super();
-		if (firstName == null || lastName == null || date == null)
+		if (firstName == null || lastName == null || dateOfBirth == null)
 			throw new IllegalArgumentException("Negative First Name, Last Name or Date of Birth");
 		this.firstName = firstName;
 		this.lastName = lastName;
 
 		// for immutable purpose.
-		this.dateOfBirth = new Date(date.getTime());
+		this.dateOfBirth = new Date(dateOfBirth.getTime());
 	}
 
 	/**
@@ -75,5 +75,40 @@ public class Person {
 	public String toString() {
 		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", dateOfBirth="
 				+ DateFormat.getDateInstance().format(dateOfBirth) + "]";
+	}
+
+	/**
+	 * @Title equals
+	 * @Description override the equals function; Two people are considered to be
+	 *              the same if they have the same name and the same date of birth.
+	 * @param obj
+	 * @return
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == this)
+			return true;
+		else if (obj instanceof Person) {
+			Person person = (Person) obj;
+			return (this.firstName == person.firstName && this.lastName == person.lastName
+					&& this.dateOfBirth.equals(person.dateOfBirth));
+		}
+		return super.equals(obj);
+	}
+
+	/**
+	 * @Title hashCode
+	 * @Description override the hashCode function;
+	 * @return
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		int hc = 17;
+		int multiplier = 37;
+		hc = multiplier * hc + firstName.hashCode();
+		hc = multiplier * hc + lastName.hashCode();
+		return multiplier * hc + dateOfBirth.hashCode();
 	}
 }

@@ -2,32 +2,65 @@
 /**
  * @Description: 
  * @author: Tong Zhou b8027512@ncl.ac.uk
- * @created: 01:24 23-10-2018
+ * @created: 00:01 24-10-2018
  */
 package uk.ac.ncl.tongzhou.advancedjava.model.car;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import uk.ac.ncl.tongzhou.advancedjava.model.CarRegistrationNumber;
 import uk.ac.ncl.tongzhou.advancedjava.model.Person;
+import uk.ac.ncl.tongzhou.advancedjava.model.TypeOfCar;
 
 /**
- * @ClassName: AbstractCar
- * @Description: The abstract class of all cars, including small cars and large
- *               cars
+ * @ClassName: CarFactory
+ * @Description:
  * 
  */
-@Deprecated
-public abstract class AbstractCar implements Car {
+public abstract class CarFactory implements Car {
 	private CarRegistrationNumber crn;
 	protected int currentFuelAmount;
 	protected int fuelTankCapacity;
 	private Person renter;
+	private static final Map<CarRegistrationNumber, Car> allCars = new HashMap<>();
 
 	/**
-	 * @Title: Constructor for AbstractCar
+	 * @Title getInstance
+	 * @Description get one car instance according to the type of car and
+	 *              carRegistrationNumber.
+	 * @param typeOfCar
+	 * @param carRegistrationNumber
+	 * @return
+	 */
+	public static Car getInstance(TypeOfCar typeOfCar, CarRegistrationNumber carRegistrationNumber) {
+		if (carRegistrationNumber == null)
+			throw new IllegalArgumentException("carRegistrationNumber should not be null.");
+		// enforce single instance per CarRegistrationNumber
+		Car car = allCars.get(carRegistrationNumber);
+		if (car != null)
+			throw new IllegalStateException(
+					"Duplicate car registration number in system : Car-" + carRegistrationNumber.toString());
+
+		if (typeOfCar == TypeOfCar.LARGE_CAR)
+			car = new LargeCar(carRegistrationNumber);
+		else if (typeOfCar == TypeOfCar.SMALL_CAR)
+			car = new SmallCar(carRegistrationNumber);
+		else
+			throw new IllegalArgumentException("Invalid car type: " + typeOfCar);
+
+		allCars.put(carRegistrationNumber, car);
+
+		return car;
+
+	}
+
+	/**
+	 * @Title: Constructor for CarFactory
 	 * @Description:
 	 * @param crn
 	 */
-	protected AbstractCar(CarRegistrationNumber crn) {
+	CarFactory(CarRegistrationNumber crn) {
 		this.crn = crn;
 	}
 
@@ -84,6 +117,8 @@ public abstract class AbstractCar implements Car {
 	 */
 	@Override
 	public int addFuelToTank(int fuelToAdd) {
+		if (fuelToAdd < 0)
+			throw new IllegalArgumentException("fuelToAdd should not be a negative number.");
 		int fuelNeeded = fuelTankCapacity - currentFuelAmount;
 		if (fuelToAdd > fuelNeeded) {
 			currentFuelAmount = fuelTankCapacity;
@@ -121,7 +156,6 @@ public abstract class AbstractCar implements Car {
 	 */
 	@Override
 	public String toString() {
-		return "Car-" + crn + " [Fuel=" + currentFuelAmount + "/" + fuelTankCapacity + ", renter=" + renter + "]";
+		return "(" + crn + ") [Fuel=" + currentFuelAmount + "/" + fuelTankCapacity + ", renter=" + renter + "]";
 	}
-
 }

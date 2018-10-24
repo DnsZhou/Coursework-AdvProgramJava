@@ -6,16 +6,29 @@
  */
 package uk.ac.ncl.tongzhou.advancedjava.model.car;
 
+import uk.ac.ncl.tongzhou.advancedjava.model.CarRegistrationNumber;
+
 /**
  * @ClassName: SmallCar
  * @Description:
  * 
  */
-public class SmallCar extends AbstractCar {
+public class SmallCar extends CarFactory {
 	/**
 	 * @Fields LARGE_CAR_FUEL_RATE : The fuel rate of driving (Kilometres/Litre)
 	 */
 	private final int LARGE_CAR_FUEL_RATE = 20;
+
+	/**
+	 * @Title Constructor for SmallCar
+	 * @Description initial a new car with full tank of fuel
+	 * @param carRegistrationNumber
+	 */
+	SmallCar(CarRegistrationNumber carRegistrationNumber) {
+		super(carRegistrationNumber);
+		this.fuelTankCapacity = 49;
+		this.currentFuelAmount = 49;
+	}
 
 	/**
 	 * @Title: driveCar
@@ -24,31 +37,42 @@ public class SmallCar extends AbstractCar {
 	 * @return
 	 * @throws IllegalStateException
 	 * @throws IllegalArgumentException
-	 * @see uk.ac.ncl.tongzhou.advancedjava.model.car.Car#driveCar(int)
+	 * @see uk.ac.ncl.tongzhou.advancedjava.model.car.Car#drive(int)
 	 */
 	@Override
-	public int driveCar(int distanceInKms) throws IllegalStateException, IllegalArgumentException {
+	public int drive(int distanceInKms) throws IllegalStateException, IllegalArgumentException {
 		// A car cannot be driven if it is not currently rented.
 		if (this.getRenter() == null) {
 			throw new java.lang.IllegalStateException("No journey has been undertaken: Car not rented");
 		}
-		
+
 		if (distanceInKms <= 0)
 			throw new java.lang.IllegalArgumentException("No journey has been undertaken: Illegal argument detected");
 		// A car cannot be driven if it has 0 or less Litres of fuel in its tank.
-		if (this.currentFuelAmount == 0)
+		if (this.currentFuelAmount <= 0)
 			throw new java.lang.IllegalStateException("No journey has been undertaken: Out of Fuel.");
 
 		// Calculate the consumed fuel in whole Litres
 		int consumedFuel = (int) Math.ceil((double) distanceInKms / (double) LARGE_CAR_FUEL_RATE);
-		if (this.currentFuelAmount < consumedFuel) {
-			throw new java.lang.IllegalStateException(
-					"No journey has been undertaken: Fuel insufficient for this journey: Required:" + consumedFuel
-							+ " Remaining:" + currentFuelAmount);
-		} else {
-			this.currentFuelAmount -= consumedFuel;
-			return consumedFuel;
-		}
+//		if (this.currentFuelAmount < consumedFuel) {
+//			throw new java.lang.IllegalStateException(
+//					"No journey has been undertaken: Fuel insufficient for this journey: Required:" + consumedFuel
+//							+ " Remaining:" + currentFuelAmount);
+//		} else {
+		this.currentFuelAmount -= consumedFuel;
+		return consumedFuel;
+//		}
+	}
+
+	/**
+	 * @Title toString
+	 * @Description
+	 * @return
+	 * @see uk.ac.ncl.tongzhou.advancedjava.model.car.CarFactory#toString()
+	 */
+	@Override
+	public String toString() {
+		return "SmallCar" + super.toString();
 	}
 
 }

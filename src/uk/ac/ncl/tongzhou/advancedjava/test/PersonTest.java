@@ -49,9 +49,11 @@ public class PersonTest {
 	/**
 	 * Test null Argument exception for
 	 * {@link uk.ac.ncl.tongzhou.advancedjava.model.Person#Person(String firstName, String lastName, Date date)}.
+	 * 
+	 * @throws IllegalArgumentException
 	 */
 	@Test(expected = IllegalArgumentException.class)
-	public void testConstructorException() {
+	public void testConstructorException() throws IllegalArgumentException {
 		Calendar date = new GregorianCalendar(1993, 9, 20);
 		Person person = new Person("Tong", null, date.getTime());
 	}

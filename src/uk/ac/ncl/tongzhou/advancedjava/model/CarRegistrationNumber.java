@@ -42,11 +42,11 @@ public final class CarRegistrationNumber {
 	 * @return: CarRegistrationNumber
 	 */
 	public static CarRegistrationNumber getInstance(String carRegistrationNumber)
-			throws IllegalArgumentException, Exception {
+			throws IllegalArgumentException, IllegalStateException {
 
 		if (carRegistrationNumber == null)
 			throw new IllegalArgumentException("carRegistrationNumber should not be null.");
-		
+
 		String carRegistrationNumbertrim = carRegistrationNumber.trim();
 		if (!validateCarRegNumber(carRegistrationNumbertrim))
 			throw new IllegalArgumentException("carRegistrationNumber : argument format not validated");
@@ -54,48 +54,42 @@ public final class CarRegistrationNumber {
 		if (allCarRegistrationNumbers == null)
 			allCarRegistrationNumbers = new HashMap<String, CarRegistrationNumber>();
 
-		
 		String comp1 = carRegistrationNumbertrim.substring(0, 4);
 		String comp2 = carRegistrationNumbertrim.substring(carRegistrationNumbertrim.length() - 3);
 		String key = comp1 + comp2;
 
 		CarRegistrationNumber crn = allCarRegistrationNumbers.get(key);
 		if (crn != null) {
-			throw new Exception("Duplicate Car Registration Number, please check.");
+			throw new IllegalStateException("Duplicate Car Registration Number, please check.");
 		} else {
 			crn = new CarRegistrationNumber(comp1, comp2);
 			allCarRegistrationNumbers.put(key, crn);
 		}
 		return crn;
 	}
-	
-	
 
-	
-	/** 
+	/**
 	 * Return the allCarRegistrationNumbers.
 	 *
-	 * @return allCarRegistrationNumbers 
+	 * @return allCarRegistrationNumbers
 	 */
 	public static Map<String, CarRegistrationNumber> getAllCarRegistrationNumbers() {
 		return allCarRegistrationNumbers;
 	}
 
-	
-	/** 
+	/**
 	 * Return the comp1.
 	 *
-	 * @return comp1 
+	 * @return comp1
 	 */
 	public String getComp1() {
 		return comp1;
 	}
 
-	
-	/** 
+	/**
 	 * Return the comp2.
 	 *
-	 * @return comp2 
+	 * @return comp2
 	 */
 	public String getComp2() {
 		return comp2;
@@ -103,17 +97,49 @@ public final class CarRegistrationNumber {
 
 	/**
 	 * @Title: toString
-	 * @Description:
+	 * @Description:override the toString function
 	 * @return
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "CarRegistrationNumber [comp1=" + comp1 + ", comp2=" + comp2 + "]";
+		return comp1 + " " + comp2;
 	}
 
 	private static boolean validateCarRegNumber(String carRegistrationNumber) {
 		Pattern p = Pattern.compile("[A-Za-z]{2}\\d{2}\\s*[A-Za-z]{3}");
 		return p.matcher(carRegistrationNumber).matches();
+	}
+
+	/**
+	 * @Title: equals
+	 * @Description: override the equals function;
+	 * @param obj
+	 * @return
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == this)
+			return true;
+		else if (obj instanceof CarRegistrationNumber) {
+			CarRegistrationNumber crn = (CarRegistrationNumber) obj;
+			return (this.comp1.equals(crn.comp1) && this.comp2.equals(crn.comp2));
+		}
+		return super.equals(obj);
+	}
+
+	/**
+	 * @Title: hashCode
+	 * @Description: override the hashCode function;
+	 * @return
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		int hc = 17;
+		int multiplier = 37;
+		hc = multiplier * hc + comp1.hashCode();
+		return multiplier * hc + comp2.hashCode();
 	}
 }

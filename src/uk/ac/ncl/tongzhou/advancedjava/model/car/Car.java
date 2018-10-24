@@ -7,6 +7,7 @@
 package uk.ac.ncl.tongzhou.advancedjava.model.car;
 
 import uk.ac.ncl.tongzhou.advancedjava.model.CarRegistrationNumber;
+import uk.ac.ncl.tongzhou.advancedjava.model.Person;
 
 /**
  * @ClassName: Car
@@ -58,11 +59,24 @@ public interface Car {
 
 	/**
 	 * @Title: driveCar
-	 * @Description:a method to "drive" the car for a given number of whole
-	 *                Kilometres that returns the number of whole Litres of fuel
-	 *                consumed during the journey
+	 * @Description a method to "drive" the car for a given number of whole
+	 *              Kilometres that returns the number of whole Litres of fuel
+	 *              consumed during the journey
 	 * @param distanceInKms
 	 * @return
 	 */
-	int driveCar(int distanceInKms);
+	int drive(int distanceInKms);
+
+	/**
+	 * @Title getRenter
+	 * @Description additional method in order to get the renter of the car.
+	 */
+	public Person getRenter();
+
+	/**
+	 * @Title setRenter
+	 * @Description additional method in order to bind a renter to the car.
+	 * @param renter
+	 */
+	public void setRenter(Person renter);
 }
