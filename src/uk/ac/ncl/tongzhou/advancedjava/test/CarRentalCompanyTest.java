@@ -8,6 +8,8 @@ package uk.ac.ncl.tongzhou.advancedjava.test;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -29,13 +31,20 @@ public class CarRentalCompanyTest {
 	@Before
 	public void setUp() throws Exception {
 	}
-
+	
+	/**
+	 * Test method for testConstructor
+	 * {@link uk.ac.ncl.tongzhou.advancedjava.model.DrivingLicence#getInstance(String licenceNumber, Date issueDate, boolean isFullLicence)}.
+	 * 
+	 * @throws IllegalStateException
+	 * @throws IllegalArgumentException
+	 */
 	@Test
 	public void test() {
 		CarRentalCompany carRentalCompany = new CarRentalCompany();
 		carRentalCompany.initializeCarFleet();
-		System.out.println(carRentalCompany.availableCars(TypeOfCar.LARGE_CAR) + " "
-				+ carRentalCompany.availableCars(TypeOfCar.SMALL_CAR));
+		assertEquals(20,carRentalCompany.availableCars(TypeOfCar.SMALL_CAR));
+		assertEquals(10,carRentalCompany.availableCars(TypeOfCar.LARGE_CAR));
 	}
 
 }
