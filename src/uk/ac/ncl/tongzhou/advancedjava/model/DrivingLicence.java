@@ -5,16 +5,18 @@
  */
 package uk.ac.ncl.tongzhou.advancedjava.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+import nl.flotsam.xeger.Xeger;
+
 /**
  * @ClassName DrivingLicence
  * @Description A driving licence has a unique number, a date of issue, and an
- *               indication whether the licence is a full driving licence or
- *               not.
+ *              indication whether the licence is a full driving licence or not.
  * 
  */
 public class DrivingLicence {
@@ -43,7 +45,7 @@ public class DrivingLicence {
 
 	/**
 	 * @Title getInstance
-	 * @Description
+	 * @Description getInstance function with defined licenceNumber.
 	 * @param licenceNumber
 	 * @param issueDate
 	 * @param isFullLicence
@@ -71,6 +73,45 @@ public class DrivingLicence {
 			drivingLicences.put(licenceNumberTrim, dl);
 			return dl;
 		}
+	}
+
+	/**
+	 * @Title getInstance
+	 * @Description getInstance function with a person, and automatically generate
+	 *              the driver licence number that aligns to the rules.
+	 * @param driver
+	 * @param issueDate
+	 * @param isFullLicence
+	 * @return
+	 * @throws IllegalStateException
+	 * @throws IllegalArgumentException
+	 */
+	public static DrivingLicence getInstance(Person driver, Date issueDate, boolean isFullLicence)
+			throws IllegalStateException, IllegalArgumentException {
+		if (driver == null || issueDate == null)
+			throw new IllegalArgumentException("Null Argument for driver or issueDate.");
+		if (drivingLicences == null) {
+			drivingLicences = new HashMap<String, DrivingLicence>();
+		}
+
+		String initial = driver.getFirstName().substring(0, 1) + driver.getLastName().substring(0, 1);
+
+		SimpleDateFormat df = new SimpleDateFormat("yyyy");
+		int issueYear = Integer.parseInt(df.format(issueDate));
+
+		String licenceNumber;
+		String regex = "[0-9]{2}";
+		Xeger generator = new Xeger(regex);
+
+		// guarantees the uniqueness of the licence number as a whole.
+		do {
+			String serial = generator.generate();
+			licenceNumber = initial + "-" + issueYear + "-" + serial;
+		} while (drivingLicences.get(licenceNumber) != null);
+
+		DrivingLicence dl = new DrivingLicence(licenceNumber, issueDate, isFullLicence);
+		drivingLicences.put(licenceNumber, dl);
+		return dl;
 	}
 
 	private static boolean validateDrivingLicenceNumber(String drvLicNum) {

@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import nl.flotsam.xeger.Xeger;
@@ -44,6 +45,9 @@ public class CarRentalCompany {
 	 * @return
 	 */
 	public long availableCars(TypeOfCar type) {
+		if (type == null) {
+			throw new IllegalArgumentException("Type of car could not be null");
+		}
 		switch (type) {
 		case LARGE_CAR:
 			return allCars.stream().filter(car -> car instanceof LargeCar && car.getRenter() == null).count();
@@ -71,7 +75,10 @@ public class CarRentalCompany {
 	 * @return
 	 */
 	public Car getCar(Person person) {
-		return allCars.stream().filter(car -> car.getRenter().equals(person)).findFirst().get();
+		if (person == null)
+			throw new IllegalArgumentException("person should not be null.");
+		return allCars.stream().filter(car -> car.getRenter() != null && car.getRenter().equals(person)).findFirst()
+				.orElse(null);
 	}
 
 	/**
@@ -108,7 +115,7 @@ public class CarRentalCompany {
 			return false;
 
 		SimpleDateFormat df = new SimpleDateFormat("yyyy");
-		int yearofBirth = Integer.parseInt(df.format(person.getDateOfBirth()));
+		int yearOfBirth = Integer.parseInt(df.format(person.getDateOfBirth()));
 		int yearOfIssue = Integer.parseInt(df.format(drivingLicence.getIssueDate()));
 		int currentYear = Integer.parseInt(df.format(new Date()));
 		/*
@@ -116,12 +123,15 @@ public class CarRentalCompany {
 		 * their licence for at least 1 year.to rent a large car, they must be at least
 		 * 25 years old and must have held their licence for at least 5 years
 		 */
-		if ((type.equals(TypeOfCar.SMALL_CAR) && currentYear - yearofBirth >= 20 && currentYear - yearOfIssue >= 1)
-				|| (type.equals(TypeOfCar.LARGE_CAR) && currentYear - yearofBirth >= 25
+		if ((type.equals(TypeOfCar.SMALL_CAR) && currentYear - yearOfBirth >= 20 && currentYear - yearOfIssue >= 1)
+				|| (type.equals(TypeOfCar.LARGE_CAR) && currentYear - yearOfBirth >= 25
 						&& currentYear - yearOfIssue >= 5)) {
 			Car oneCar = getOneCar(type);
-			oneCar.setRenter(person);
-			return true;
+			if (oneCar != null) {
+				oneCar.setRenter(person);
+				return true;
+			} else
+				return false;
 		} else
 			return false;
 
@@ -149,7 +159,9 @@ public class CarRentalCompany {
 		if (currentCar == null)
 			return 0;
 		currentCar.setRenter(null);
-		return currentCar.getFuelTankCapacity() - currentCar.getCurrentFuelAmount();
+		int fuelToAdd = currentCar.getFuelTankCapacity() - currentCar.getCurrentFuelAmount();
+		currentCar.addFuelToTank(fuelToAdd);
+		return fuelToAdd;
 	}
 
 	/**
@@ -161,9 +173,11 @@ public class CarRentalCompany {
 	private Car getOneCar(TypeOfCar type) {
 		switch (type) {
 		case LARGE_CAR:
-			return allCars.stream().filter(car -> car instanceof LargeCar && car.getRenter() == null).findFirst().get();
+			return allCars.stream().filter(car -> car instanceof LargeCar && car.getRenter() == null).findFirst()
+					.orElse(null);
 		case SMALL_CAR:
-			return allCars.stream().filter(car -> car instanceof SmallCar && car.getRenter() == null).findFirst().get();
+			return allCars.stream().filter(car -> car instanceof SmallCar && car.getRenter() == null).findFirst()
+					.orElse(null);
 		}
 		return null;
 	}
