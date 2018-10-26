@@ -1,6 +1,6 @@
 
 /**
- * @Description: 
+ * 
  * @author: Tong Zhou b8027512@ncl.ac.uk
  * @created: 01:28 23-10-2018
  */
@@ -20,17 +20,15 @@ import uk.ac.ncl.tongzhou.advancedjava.model.car.LargeCar;
 import uk.ac.ncl.tongzhou.advancedjava.model.car.SmallCar;
 
 /**
- * @ClassName: CarRentalCompany
- * @Description: The main class for a Car Rental Company
+ * CarRentalCompany The main class for a Car Rental Company
  * 
  */
 public class CarRentalCompany {
 	private List<Car> allCars;
 
 	/**
-	 * @Title Constructor for CarRentalCompany
-	 * @Description
-	 * @param allCars
+	 * Constructor for CarRentalCompany
+	 * 
 	 */
 	public CarRentalCompany() {
 		super();
@@ -38,11 +36,12 @@ public class CarRentalCompany {
 	}
 
 	/**
-	 * @Title availableCars
-	 * @Description This method returns the number of cars of the specified type
-	 *              that are available to rent.
+	 * This method returns the number of cars of the specified type that are
+	 * available to rent.
+	 * 
 	 * @param type
-	 * @return
+	 * @return Returns the number of cars of the specified type that are available
+	 *         to rent.
 	 */
 	public long availableCars(TypeOfCar type) {
 		if (type == null) {
@@ -58,21 +57,21 @@ public class CarRentalCompany {
 	}
 
 	/**
-	 * @Title getRentedCars
-	 * @Description This method returns a collection of all the cars currently
-	 *              rented out (if any).
-	 * @return
+	 * This method returns a collection of all the cars currently rented out (if
+	 * any).
+	 * 
+	 * @return returns a collection of all the cars currently rented out (if any).
 	 */
 	public List<Car> getRentedCars() {
 		return allCars.stream().filter(car -> car.getRenter() != null).collect(Collectors.toList());
 	}
 
 	/**
-	 * @Title getCar
-	 * @Description Given a person, this method returns the car they are currently
-	 *              renting (if any).
+	 * Given a person, this method returns the car they are currently renting (if
+	 * any).
+	 * 
 	 * @param person
-	 * @return
+	 * @return returns the car they are currently renting (if any).
 	 */
 	public Car getCar(Person person) {
 		if (person == null)
@@ -82,23 +81,21 @@ public class CarRentalCompany {
 	}
 
 	/**
-	 * @Title issueCar
-	 * @DescriptionThis Given a Person (the renter), the person's DrivingLicence and
-	 *                  a specification of the type of car required (small or
-	 *                  large), this method determines whether the person is
-	 *                  eligible to rent a car of the specified type and, if there
-	 *                  is a car available, issues a car of the specified type. The
-	 *                  car has a full tank of petrol at the start of the rental.
-	 *                  The method associates the car with the person renting it (so
-	 *                  that the company has a record of cars out for rent and the
-	 *                  people renting them). If a car cannot be issued, the method
-	 *                  returns an appropriate indication of the failure to issue a
-	 *                  car. Note, this does not have to indicate why a car cannot
-	 *                  be issued; it simply indicates that a car cannot be issued.
+	 * This Given a Person (the renter), the person's DrivingLicence and a
+	 * specification of the type of car required (small or large), this method
+	 * determines whether the person is eligible to rent a car of the specified type
+	 * and, if there is a car available, issues a car of the specified type. The car
+	 * has a full tank of petrol at the start of the rental. The method associates
+	 * the car with the person renting it (so that the company has a record of cars
+	 * out for rent and the people renting them). If a car cannot be issued, the
+	 * method returns an appropriate indication of the failure to issue a car. Note,
+	 * this does not have to indicate why a car cannot be issued; it simply
+	 * indicates that a car cannot be issued.
+	 * 
 	 * @param person
 	 * @param drivingLicence
 	 * @param type
-	 * @return
+	 * @return returns whether the car is available to rent or not.
 	 */
 	public boolean issueCar(Person person, DrivingLicence drivingLicence, TypeOfCar type) {
 		if (person == null || drivingLicence == null || type == null)
@@ -138,21 +135,19 @@ public class CarRentalCompany {
 	}
 
 	/**
-	 * @Title terminateRental
-	 * @Description This method terminates the given person's rental contract. In
-	 *              effect, the person is returning the car. The car is then
-	 *              available for rent by someone else. The method removes the
-	 *              record of the rental from the company's records (disassociating
-	 *              the car from the person) and returns the amount of fuel in
-	 *              Litres required to fill the car's tank. The person returning the
-	 *              car must either have returned the car with a full tank or will
-	 *              be liable for the number of Litres required to fill the tank.
-	 *              This terminateRental method is not responsible for managing
-	 *              charges for the required fuel. It just reports the amount of
-	 *              fuel required to fill the tank. If a person attempts to
-	 *              terminate a non-existent contract, this method does nothing.
+	 * This method terminates the given person's rental contract. In effect, the
+	 * person is returning the car. The car is then available for rent by someone
+	 * else. The method removes the record of the rental from the company's records
+	 * (disassociating the car from the person) and returns the amount of fuel in
+	 * Litres required to fill the car's tank. The person returning the car must
+	 * either have returned the car with a full tank or will be liable for the
+	 * number of Litres required to fill the tank. This terminateRental method is
+	 * not responsible for managing charges for the required fuel. It just reports
+	 * the amount of fuel required to fill the tank. If a person attempts to
+	 * terminate a non-existent contract, this method does nothing.
+	 * 
 	 * @param person
-	 * @return
+	 * @return returns the amount of fuel required to fill the tank.
 	 */
 	public int terminateRental(Person person) {
 		Car currentCar = this.getCar(person);
@@ -164,12 +159,6 @@ public class CarRentalCompany {
 		return fuelToAdd;
 	}
 
-	/**
-	 * @Title getOneCar
-	 * @Description additional method for getting one available car from fleet.
-	 * @param type
-	 * @return
-	 */
 	private Car getOneCar(TypeOfCar type) {
 		switch (type) {
 		case LARGE_CAR:
@@ -188,6 +177,8 @@ public class CarRentalCompany {
 	}
 
 	private void addCars(TypeOfCar type, int amount) {
+		// Use third-party library XEGER to generate random String according to regular
+		// expression expressions.
 		String regex = "[A-Z]{2}[0-9]{2} [A-Z]{3}";
 		Xeger generator = new Xeger(regex);
 		String crn;

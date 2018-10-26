@@ -1,6 +1,6 @@
 
 /**
- * @Description: 
+ * 
  * @author: Tong Zhou b8027512@ncl.ac.uk
  * @created: 00:01 24-10-2018
  */
@@ -14,8 +14,8 @@ import uk.ac.ncl.tongzhou.advancedjava.model.Person;
 import uk.ac.ncl.tongzhou.advancedjava.model.TypeOfCar;
 
 /**
- * @ClassName: CarFactory
- * @Description:
+ * CarFactory
+ * 
  * 
  */
 public abstract class CarFactory implements Car {
@@ -26,12 +26,11 @@ public abstract class CarFactory implements Car {
 	private static final Map<CarRegistrationNumber, Car> allCars = new HashMap<>();
 
 	/**
-	 * @Title getInstance
-	 * @Description get one car instance according to the type of car and
-	 *              carRegistrationNumber.
+	 * get one car instance according to the type of car and carRegistrationNumber.
+	 * 
 	 * @param typeOfCar
 	 * @param carRegistrationNumber
-	 * @return
+	 * @return new instance of Car
 	 */
 	public static Car getInstance(TypeOfCar typeOfCar, CarRegistrationNumber carRegistrationNumber) {
 		if (carRegistrationNumber == null)
@@ -56,8 +55,7 @@ public abstract class CarFactory implements Car {
 	}
 
 	/**
-	 * @Title: Constructor for CarFactory
-	 * @Description:
+	 * 
 	 * @param crn
 	 */
 	CarFactory(CarRegistrationNumber crn) {
@@ -65,9 +63,8 @@ public abstract class CarFactory implements Car {
 	}
 
 	/**
-	 * @Title: getCarRegistrationNumber
-	 * @Description:
-	 * @return
+	 * 
+	 * @return CarRegistrationNumber
 	 * @see uk.ac.ncl.tongzhou.advancedjava.model.car.Car#getCarRegistrationNumber()
 	 */
 	@Override
@@ -76,9 +73,8 @@ public abstract class CarFactory implements Car {
 	}
 
 	/**
-	 * @Title: getFuelTankCapacity
-	 * @Description:
-	 * @return
+	 * 
+	 * @return FuelTankCapacity
 	 * @see uk.ac.ncl.tongzhou.advancedjava.model.car.Car#getFuelTankCapacity()
 	 */
 	@Override
@@ -87,9 +83,8 @@ public abstract class CarFactory implements Car {
 	}
 
 	/**
-	 * @Title: getCurrentFuelAmount
-	 * @Description:
-	 * @return
+	 * 
+	 * @return CurrentFuelAmount
 	 * @see uk.ac.ncl.tongzhou.advancedjava.model.car.Car#getCurrentFuelAmount()
 	 */
 	@Override
@@ -98,9 +93,8 @@ public abstract class CarFactory implements Car {
 	}
 
 	/**
-	 * @Title: isFullFuelInTank
-	 * @Description:
-	 * @return
+	 * 
+	 * @return isFullFuelInTank
 	 * @see uk.ac.ncl.tongzhou.advancedjava.model.car.Car#isFullFuelInTank()
 	 */
 	@Override
@@ -109,10 +103,9 @@ public abstract class CarFactory implements Car {
 	}
 
 	/**
-	 * @Title: addFuelToTank
-	 * @Description:
+	 * 
 	 * @param fuelToAdd
-	 * @return
+	 * @return actual added fuel
 	 * @see uk.ac.ncl.tongzhou.advancedjava.model.car.Car#addFuelToTank(int)
 	 */
 	@Override
@@ -149,9 +142,8 @@ public abstract class CarFactory implements Car {
 	}
 
 	/**
-	 * @Title: toString
-	 * @Description:
-	 * @return
+	 * 
+	 * @return String
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

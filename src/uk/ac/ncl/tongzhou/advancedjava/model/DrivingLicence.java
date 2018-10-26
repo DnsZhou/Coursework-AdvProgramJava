@@ -1,5 +1,5 @@
 /**
- * @Description 
+ * 
  * @author Tong Zhou b8027512@ncl.ac.uk
  * @created 15:51 16-10-2018
  */
@@ -14,8 +14,8 @@ import java.util.regex.Pattern;
 import nl.flotsam.xeger.Xeger;
 
 /**
- * @ClassName DrivingLicence
- * @Description A driving licence has a unique number, a date of issue, and an
+ *  DrivingLicence
+ * A driving licence has a unique number, a date of issue, and an
  *              indication whether the licence is a full driving licence or not.
  * 
  */
@@ -30,8 +30,6 @@ public class DrivingLicence {
 	private static Map<String, DrivingLicence> drivingLicences;
 
 	/**
-	 * @Title Constructor for DrivingLicence
-	 * @Description
 	 * @param licenceNumber
 	 * @param issueDate
 	 * @param isFullLicence
@@ -44,13 +42,13 @@ public class DrivingLicence {
 	}
 
 	/**
-	 * @Title getInstance
-	 * @Description getInstance function with defined licenceNumber.
+	 * getInstance function with defined licenceNumber.
 	 * @param licenceNumber
 	 * @param issueDate
 	 * @param isFullLicence
-	 * @return
-	 * @throws Exception
+	 * @return DrivingLicence
+	 * @throws IllegalStateException
+	 * @throws IllegalArgumentException
 	 */
 	public static DrivingLicence getInstance(String licenceNumber, Date issueDate, boolean isFullLicence)
 			throws IllegalStateException, IllegalArgumentException {
@@ -76,13 +74,12 @@ public class DrivingLicence {
 	}
 
 	/**
-	 * @Title getInstance
-	 * @Description getInstance function with a person, and automatically generate
+	 * getInstance function with a person, and automatically generate
 	 *              the driver licence number that aligns to the rules.
 	 * @param driver
 	 * @param issueDate
 	 * @param isFullLicence
-	 * @return
+	 * @return DrivingLicence
 	 * @throws IllegalStateException
 	 * @throws IllegalArgumentException
 	 */
@@ -147,10 +144,9 @@ public class DrivingLicence {
 	}
 
 	/**
-	 * @Title equals
-	 * @Description override the equals function;
+	 * override the equals function;
 	 * @param obj
-	 * @return
+	 * @return override the equals function
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -165,9 +161,8 @@ public class DrivingLicence {
 	}
 
 	/**
-	 * @Title hashCode
-	 * @Description override the hashCode function;
-	 * @return
+	 * override the hashCode function;
+	 * @return override the hashCode function
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override

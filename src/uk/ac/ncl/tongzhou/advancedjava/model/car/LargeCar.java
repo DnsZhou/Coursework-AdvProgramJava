@@ -1,6 +1,6 @@
 
 /**
- * @Description: 
+ * 
  * @author: Tong Zhou b8027512@ncl.ac.uk
  * @created: 01:25 23-10-2018
  */
@@ -9,8 +9,8 @@ package uk.ac.ncl.tongzhou.advancedjava.model.car;
 import uk.ac.ncl.tongzhou.advancedjava.model.CarRegistrationNumber;
 
 /**
- * @ClassName: LargeCar
- * @Description:
+ *  LargeCar
+ * 
  * 
  */
 public class LargeCar extends CarFactory {
@@ -34,8 +34,7 @@ public class LargeCar extends CarFactory {
 	private final int LARGE_CAR_FUEL_RATE1_THRESHOLD = 50;
 
 	/**
-	 * @Title Constructor for LargeCar
-	 * @Description initial a new car with full tank of fuel.
+	 * initial a new car with full tank of fuel.
 	 * @param carRegistrationNumber
 	 */
 	LargeCar(CarRegistrationNumber carRegistrationNumber) {
@@ -45,12 +44,11 @@ public class LargeCar extends CarFactory {
 	}
 
 	/**
-	 * @Title: driveCar
-	 * @Description: A large car consumes fuel at the rate of 10 Kilometres/Litre
+	 * A large car consumes fuel at the rate of 10 Kilometres/Litre
 	 *               for the first 50 Kilometres of a journey and then at the rate
 	 *               of 15 Kilometres/Litre for the remainder of the journey.
 	 * @param distanceInKms
-	 * @return
+	 * @return 
 	 * @throws IllegalStateException
 	 * @throws IllegalArgumentException
 	 * @see uk.ac.ncl.tongzhou.advancedjava.model.car.Car#drive(int)
@@ -88,8 +86,6 @@ public class LargeCar extends CarFactory {
 	}
 
 	/**
-	 * @Title toString
-	 * @Description
 	 * @return
 	 * @see uk.ac.ncl.tongzhou.advancedjava.model.car.CarFactory#toString()
 	 */

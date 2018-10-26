@@ -1,6 +1,6 @@
 
 /**
- * @Description  
+ *  
  * @author Tong Zhou b8027512@ncl.ac.uk
  * @created 03:24 24-10-2018
  */
@@ -23,15 +23,12 @@ import uk.ac.ncl.tongzhou.advancedjava.model.TypeOfCar;
 import uk.ac.ncl.tongzhou.advancedjava.model.car.Car;
 
 /**
- * @ClassName TestCarRentalCompany
- * @Description
+ *  TestCarRentalCompany
  * 
  */
 public class CarRentalCompanyTest {
 
 	/**
-	 * @Title setUp
-	 * @Description
 	 * @throws java.lang.Exception
 	 */
 	@Before

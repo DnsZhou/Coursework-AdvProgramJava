@@ -1,6 +1,6 @@
 
 /**
- * @Description: 
+ * 
  * @author: Tong Zhou b8027512@ncl.ac.uk
  * @created: 23:52 16-10-2018
  */
@@ -11,11 +11,10 @@ import java.util.Map;
 import java.util.regex.Pattern;
 
 /**
- * @ClassName: CarRegistrationNumber
- * @Description: A car registration number has two components. The first
- *               component is two letters followed by two digits. The second
- *               component is three letters. Registration numbers are unique. No
- *               two cars have the same registration number.
+ * CarRegistrationNumber A car registration number has two components. The first
+ * component is two letters followed by two digits. The second component is
+ * three letters. Registration numbers are unique. No two cars have the same
+ * registration number.
  * 
  */
 public final class CarRegistrationNumber {
@@ -24,7 +23,6 @@ public final class CarRegistrationNumber {
 	private final String comp2;
 
 	/**
-	 * @Title: Constructor for CarRegistrationNumber
 	 * @param comp1
 	 * @param comp2
 	 */
@@ -35,9 +33,7 @@ public final class CarRegistrationNumber {
 	}
 
 	/**
-	 * @Title: getInstance
-	 * @param String
-	 *            carRegistrationNumber
+	 * @param carRegistrationNumber
 	 * @throws IllegalArgumentException
 	 * @return: CarRegistrationNumber
 	 */
@@ -96,9 +92,9 @@ public final class CarRegistrationNumber {
 	}
 
 	/**
-	 * @Title: toString
-	 * @Description:override the toString function
-	 * @return
+	 * override the toString function
+	 * 
+	 * @return toString function
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -112,10 +108,10 @@ public final class CarRegistrationNumber {
 	}
 
 	/**
-	 * @Title: equals
-	 * @Description: override the equals function;
+	 * override the equals function;
+	 * 
 	 * @param obj
-	 * @return
+	 * @return override the equals function;
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -130,9 +126,9 @@ public final class CarRegistrationNumber {
 	}
 
 	/**
-	 * @Title: hashCode
-	 * @Description: override the hashCode function;
-	 * @return
+	 * override the hashCode function;
+	 * 
+	 * @return override the hashCode function;
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override

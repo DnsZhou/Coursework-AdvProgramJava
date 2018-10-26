@@ -1,6 +1,6 @@
 
 /**
- * @Description: 
+ * 
  * @author: Tong Zhou b8027512@ncl.ac.uk
  * @created: 01:24 23-10-2018
  */
@@ -10,9 +10,8 @@ import uk.ac.ncl.tongzhou.advancedjava.model.CarRegistrationNumber;
 import uk.ac.ncl.tongzhou.advancedjava.model.Person;
 
 /**
- * @ClassName: AbstractCar
- * @Description: The abstract class of all cars, including small cars and large
- *               cars
+ * AbstractCar The abstract class of all cars, including small cars and large
+ * cars. This class has been deprecated, please do not use it.
  * 
  */
 @Deprecated
@@ -23,8 +22,7 @@ public abstract class AbstractCar implements Car {
 	private Person renter;
 
 	/**
-	 * @Title: Constructor for AbstractCar
-	 * @Description:
+	 * 
 	 * @param crn
 	 */
 	protected AbstractCar(CarRegistrationNumber crn) {
@@ -32,9 +30,8 @@ public abstract class AbstractCar implements Car {
 	}
 
 	/**
-	 * @Title: getCarRegistrationNumber
-	 * @Description:
-	 * @return
+	 * 
+	 * @return CarRegistrationNumber
 	 * @see uk.ac.ncl.tongzhou.advancedjava.model.car.Car#getCarRegistrationNumber()
 	 */
 	@Override
@@ -43,9 +40,8 @@ public abstract class AbstractCar implements Car {
 	}
 
 	/**
-	 * @Title: getFuelTankCapacity
-	 * @Description:
-	 * @return
+	 * 
+	 * @return FuelTankCapacity
 	 * @see uk.ac.ncl.tongzhou.advancedjava.model.car.Car#getFuelTankCapacity()
 	 */
 	@Override
@@ -54,9 +50,8 @@ public abstract class AbstractCar implements Car {
 	}
 
 	/**
-	 * @Title: getCurrentFuelAmount
-	 * @Description:
-	 * @return
+	 * 
+	 * @return CurrentFuelAmount
 	 * @see uk.ac.ncl.tongzhou.advancedjava.model.car.Car#getCurrentFuelAmount()
 	 */
 	@Override
@@ -65,9 +60,8 @@ public abstract class AbstractCar implements Car {
 	}
 
 	/**
-	 * @Title: isFullFuelInTank
-	 * @Description:
-	 * @return
+	 * 
+	 * @return isFullFuelInTank
 	 * @see uk.ac.ncl.tongzhou.advancedjava.model.car.Car#isFullFuelInTank()
 	 */
 	@Override
@@ -76,10 +70,9 @@ public abstract class AbstractCar implements Car {
 	}
 
 	/**
-	 * @Title: addFuelToTank
-	 * @Description:
+	 * 
 	 * @param fuelToAdd
-	 * @return
+	 * @return the fuel actually added
 	 * @see uk.ac.ncl.tongzhou.advancedjava.model.car.Car#addFuelToTank(int)
 	 */
 	@Override
@@ -114,9 +107,8 @@ public abstract class AbstractCar implements Car {
 	}
 
 	/**
-	 * @Title: toString
-	 * @Description:
-	 * @return
+	 * 
+	 * @return String
 	 * @see java.lang.Object#toString()
 	 */
 	@Override

@@ -1,6 +1,6 @@
 
 /**
- * @Description: 
+ * 
  * @author: Tong Zhou b8027512@ncl.ac.uk
  * @created: 13:20 21-10-2018
  */
@@ -14,15 +14,14 @@ import org.junit.Test;
 import uk.ac.ncl.tongzhou.advancedjava.model.CarRegistrationNumber;
 
 /**
- * @ClassName: CarRegistrationNumberTest
- * @Description:
+ *  CarRegistrationNumberTest
+ * 
  * 
  */
 public class CarRegistrationNumberTest {
 
 	/**
-	 * @Title: setUp
-	 * @Description:
+	 * 
 	 * @throws java.lang.Exception
 	 */
 	@Before

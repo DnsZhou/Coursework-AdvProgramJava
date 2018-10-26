@@ -1,6 +1,6 @@
 
 /**
- * @Description: 
+ * 
  * @author: Tong Zhou b8027512@ncl.ac.uk
  * @created: 23:48 16-10-2018
  */
@@ -21,15 +21,14 @@ import uk.ac.ncl.tongzhou.advancedjava.model.DrivingLicence;
 import uk.ac.ncl.tongzhou.advancedjava.model.Person;
 
 /**
- * @ClassName: TestDrivingLicence
- * @Description:
+ *  TestDrivingLicence
+ * 
  * 
  */
 public class DrivingLicenceTest {
 
 	/**
-	 * @Title: setUp
-	 * @Description:
+	 * 
 	 * @throws java.lang.Exception
 	 */
 	@Before

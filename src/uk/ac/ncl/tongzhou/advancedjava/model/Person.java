@@ -1,5 +1,5 @@
 /**
- * @Description: 
+ * 
  * @author: Tong Zhou b8027512@ncl.ac.uk
  * @created: 15:10 16-10-2018
  */
@@ -11,8 +11,8 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 /**
- * @ClassName: Person
- * @Description: A person (or customer) with name and a date of birth.
+ *  Person
+ * A person (or customer) with name and a date of birth.
  * 
  */
 public class Person {
@@ -21,7 +21,6 @@ public class Person {
 	private Date dateOfBirth;
 
 	/**
-	 * @Title: Constructor for Person
 	 * @param firstName
 	 * @param lastName
 	 * @param dateOfBirth
@@ -66,9 +65,8 @@ public class Person {
 	}
 
 	/**
-	 * @Title: toString
-	 * @Description:
-	 * @return
+	 * 
+	 * @return String
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -78,11 +76,10 @@ public class Person {
 	}
 
 	/**
-	 * @Title equals
-	 * @Description override the equals function; Two people are considered to be
+	 * override the equals function; Two people are considered to be
 	 *              the same if they have the same name and the same date of birth.
 	 * @param obj
-	 * @return
+	 * @return the equals function
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -98,9 +95,8 @@ public class Person {
 	}
 
 	/**
-	 * @Title hashCode
-	 * @Description override the hashCode function;
-	 * @return
+	 * override the hashCode function;
+	 * @return  override the hashCode function
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override

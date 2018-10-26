@@ -1,6 +1,6 @@
 
 /**
- * @Description: 
+ * 
  * @author: Tong Zhou b8027512@ncl.ac.uk
  * @created: 23:48 16-10-2018
  */
@@ -18,17 +18,15 @@ import org.junit.Test;
 import uk.ac.ncl.tongzhou.advancedjava.model.Person;
 
 /**
- * @ClassName: TestPerson
- * @Description:
+ * TestPerson
+ * 
  * 
  */
 public class PersonTest {
 
 	/**
-	 * @Title: setUp
-	 * @Description:
+	 * 
 	 * @throws java.lang.Exception
-	 * @return: void
 	 */
 	@Before
 	public void setUp() throws Exception {

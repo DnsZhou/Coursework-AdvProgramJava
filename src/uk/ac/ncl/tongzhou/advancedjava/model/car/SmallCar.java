@@ -1,6 +1,6 @@
 
 /**
- * @Description: 
+ * 
  * @author: Tong Zhou b8027512@ncl.ac.uk
  * @created: 01:25 23-10-2018
  */
@@ -9,8 +9,8 @@ package uk.ac.ncl.tongzhou.advancedjava.model.car;
 import uk.ac.ncl.tongzhou.advancedjava.model.CarRegistrationNumber;
 
 /**
- * @ClassName: SmallCar
- * @Description:
+ * SmallCar
+ * 
  * 
  */
 public class SmallCar extends CarFactory {
@@ -20,8 +20,8 @@ public class SmallCar extends CarFactory {
 	private final int LARGE_CAR_FUEL_RATE = 20;
 
 	/**
-	 * @Title Constructor for SmallCar
-	 * @Description initial a new car with full tank of fuel
+	 * initial a new car with full tank of fuel
+	 * 
 	 * @param carRegistrationNumber
 	 */
 	SmallCar(CarRegistrationNumber carRegistrationNumber) {
@@ -31,12 +31,14 @@ public class SmallCar extends CarFactory {
 	}
 
 	/**
-	 * @Title: driveCar
-	 * @Description: A small car consumes fuel at the rate of 20 Kilometres/Litre.
+	 * A small car consumes fuel at the rate of 20 Kilometres/Litre.
+	 * 
 	 * @param distanceInKms
-	 * @return
+	 * @return the number of whole Litres of fuel consumed during the journey
 	 * @throws IllegalStateException
+	 *             if Car not rented.
 	 * @throws IllegalArgumentException
+	 *             if <code>distanceInKms</code> is empty
 	 * @see uk.ac.ncl.tongzhou.advancedjava.model.car.Car#drive(int)
 	 */
 	@Override
@@ -54,20 +56,19 @@ public class SmallCar extends CarFactory {
 
 		// Calculate the consumed fuel in whole Litres
 		int consumedFuel = (int) Math.ceil((double) distanceInKms / (double) LARGE_CAR_FUEL_RATE);
-//		if (this.currentFuelAmount < consumedFuel) {
-//			throw new java.lang.IllegalStateException(
-//					"No journey has been undertaken: Fuel insufficient for this journey: Required:" + consumedFuel
-//							+ " Remaining:" + currentFuelAmount);
-//		} else {
+		// if (this.currentFuelAmount < consumedFuel) {
+		// throw new java.lang.IllegalStateException(
+		// "No journey has been undertaken: Fuel insufficient for this journey:
+		// Required:" + consumedFuel
+		// + " Remaining:" + currentFuelAmount);
+		// } else {
 		this.currentFuelAmount -= consumedFuel;
 		return consumedFuel;
-//		}
+		// }
 	}
 
 	/**
-	 * @Title toString
-	 * @Description
-	 * @return
+	 * @return String
 	 * @see uk.ac.ncl.tongzhou.advancedjava.model.car.CarFactory#toString()
 	 */
 	@Override

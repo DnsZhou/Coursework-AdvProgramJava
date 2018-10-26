@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClassDiagram>
+    <Class name="uk.ac.ncl.tongzhou.advancedjava.model.DrivingLicence"
+        x="804" y="137">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="uk.ac.ncl.tongzhou.advancedjava.model.DrivingLicence"
+            endpointName="drivingLicences" kind="Simple"/>
+    </Class>
+    <Class name="uk.ac.ncl.tongzhou.advancedjava.model.car.Car" x="566" y="172">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="uk.ac.ncl.tongzhou.advancedjava.model.car.LargeCar"
+        x="650" y="562">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="uk.ac.ncl.tongzhou.advancedjava.model.car.CarFactory"/>
+        <Communication destinationClassName="uk.ac.ncl.tongzhou.advancedjava.model.car.CarFactory"/>
+    </Class>
+    <Class name="uk.ac.ncl.tongzhou.advancedjava.model.car.SmallCar"
+        x="335" y="565">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="uk.ac.ncl.tongzhou.advancedjava.model.car.CarFactory"/>
+        <Communication destinationClassName="uk.ac.ncl.tongzhou.advancedjava.model.car.CarFactory"/>
+    </Class>
+    <Class
+        name="uk.ac.ncl.tongzhou.advancedjava.model.CarRegistrationNumber"
+        x="889" y="332">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="uk.ac.ncl.tongzhou.advancedjava.model.CarRegistrationNumber"
+            endpointName="allCarRegistrationNumbers" kind="Simple"/>
+    </Class>
+    <Class name="uk.ac.ncl.tongzhou.advancedjava.model.CarRentalCompany"
+        x="142" y="153">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Association
+            destinationClassName="uk.ac.ncl.tongzhou.advancedjava.model.car.Car"
+            endpointName="allCars" kind="Simple"/>
+        <Communication destinationClassName="uk.ac.ncl.tongzhou.advancedjava.model.DrivingLicence"/>
+        <Communication destinationClassName="uk.ac.ncl.tongzhou.advancedjava.model.car.Car"/>
+    </Class>
+    <Class name="uk.ac.ncl.tongzhou.advancedjava.model.Person" x="167" y="327">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+    </Class>
+    <Class name="uk.ac.ncl.tongzhou.advancedjava.model.car.CarFactory"
+        x="529" y="345">
+        <AttributesDisplayFilter public-accepted="true"
+            private-accepted="true" protected-accepted="true"
+            default-accepted="true" static-accepted="false"/>
+        <MethodDisplayFilter public-accepted="true"
+            private-accepted="false" protected-accepted="false"
+            default-accepted="false" static-accepted="false"
+            accessors-accepted="false" constructors-accepted="false"/>
+        <Extension destinationClassName="uk.ac.ncl.tongzhou.advancedjava.model.car.Car"/>
+        <Association
+            destinationClassName="uk.ac.ncl.tongzhou.advancedjava.model.car.Car"
+            endpointName="allCars" kind="Simple"/>
+        <Association
+            destinationClassName="uk.ac.ncl.tongzhou.advancedjava.model.Person"
+            endpointName="renter" kind="Simple"/>
+        <Association
+            destinationClassName="uk.ac.ncl.tongzhou.advancedjava.model.CarRegistrationNumber"
+            endpointName="crn" kind="Simple"/>
+        <Communication destinationClassName="uk.ac.ncl.tongzhou.advancedjava.model.CarRegistrationNumber"/>
+    </Class>
+</ClassDiagram>
