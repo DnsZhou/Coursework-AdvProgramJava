@@ -39,9 +39,13 @@ public class PersonTest {
 	@Test
 	public void testConstructorNormal() {
 		// use Calendar to generate a new date and convert to java.util.Date.
-		Calendar date = new GregorianCalendar(1993, 10, 20);
+		Calendar date = Calendar.getInstance();
+		date.add(Calendar.YEAR, -26);
 		Person person = new Person("Tong", "Zhou", date.getTime());
-		assertEquals("Person [firstName=Tong, lastName=Zhou, dateOfBirth=1993-11-20]", person.toString());
+		
+		assertEquals(person.getFirstName(), "Tong");
+		assertEquals(person.getLastName(), "Zhou");
+		assertEquals(person.getDateOfBirth().getTime(), date.getTime().getTime());
 	}
 
 	/**

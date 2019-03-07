@@ -8,6 +8,7 @@ package uk.ac.ncl.tongzhou.advancedjava.model;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -111,18 +112,15 @@ public class CarRentalCompany {
 		if (this.getCar(person) != null)
 			return false;
 
-		SimpleDateFormat df = new SimpleDateFormat("yyyy");
-		int yearOfBirth = Integer.parseInt(df.format(person.getDateOfBirth()));
-		int yearOfIssue = Integer.parseInt(df.format(drivingLicence.getIssueDate()));
-		int currentYear = Integer.parseInt(df.format(new Date()));
 		/*
 		 * to rent a small car, they must be at least 20 years old and must have held
 		 * their licence for at least 1 year.to rent a large car, they must be at least
 		 * 25 years old and must have held their licence for at least 5 years
 		 */
-		if ((type.equals(TypeOfCar.SMALL_CAR) && currentYear - yearOfBirth >= 20 && currentYear - yearOfIssue >= 1)
-				|| (type.equals(TypeOfCar.LARGE_CAR) && currentYear - yearOfBirth >= 25
-						&& currentYear - yearOfIssue >= 5)) {
+		if ((type.equals(TypeOfCar.SMALL_CAR) && compareDateMoreThanNYearsTillNow(person.getDateOfBirth(), 20)
+				&& compareDateMoreThanNYearsTillNow(drivingLicence.getIssueDate(), 1))
+				|| (type.equals(TypeOfCar.LARGE_CAR) && compareDateMoreThanNYearsTillNow(person.getDateOfBirth(), 25)
+						&& compareDateMoreThanNYearsTillNow(drivingLicence.getIssueDate(), 5))) {
 			Car oneCar = getOneCar(type);
 			if (oneCar != null) {
 				oneCar.setRenter(person);
@@ -191,6 +189,18 @@ public class CarRentalCompany {
 			}
 
 		}
+
+	}
+
+	private boolean compareDateMoreThanNYearsTillNow(final Date date, int years) {
+		Calendar today = Calendar.getInstance();
+		Calendar targetDate = Calendar.getInstance();
+		targetDate.setTime(date);
+		targetDate.add(Calendar.YEAR, years);
+		if (targetDate.getTime().getTime() > today.getTime().getTime())
+			return false;
+		else
+			return true;
 
 	}
 }

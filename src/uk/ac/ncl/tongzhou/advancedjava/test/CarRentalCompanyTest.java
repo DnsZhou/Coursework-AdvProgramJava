@@ -23,7 +23,7 @@ import uk.ac.ncl.tongzhou.advancedjava.model.TypeOfCar;
 import uk.ac.ncl.tongzhou.advancedjava.model.car.Car;
 
 /**
- *  TestCarRentalCompany
+ * TestCarRentalCompany
  * 
  */
 public class CarRentalCompanyTest {
@@ -111,23 +111,38 @@ public class CarRentalCompanyTest {
 	public void testIssueCarUnsatisfySmallCar() {
 		CarRentalCompany carRentalCompany = new CarRentalCompany();
 		carRentalCompany.initializeCarFleet();
-		Calendar date19Year = new GregorianCalendar(1999, 9, 20);
-		Calendar date20Year = new GregorianCalendar(1998, 9, 20);
-		Calendar date1Year = new GregorianCalendar(2017, 9, 20);
-		Calendar date0Year = new GregorianCalendar(2018, 9, 20);
+
+		Calendar date19Year = Calendar.getInstance();
+		date19Year.add(Calendar.YEAR, -19);
+		Calendar date21Year = Calendar.getInstance();
+		date21Year.add(Calendar.YEAR, -21);
+
+		// Calendar test = Calendar.getInstance();
+		// test.set(Calendar.DATE, 1);
+		// System.out.println(test.getTime());
+		// test.add(Calendar.DATE, -2);
+		// System.out.println(test.getTime());
+		
+		// Calendar.add() works perfectly with any parameter, even current date is 1,
+		// you can still execute .add(Calendar.DATE, -1).
+
+		Calendar date0Year = Calendar.getInstance();
+		date0Year.add(Calendar.DATE, -1);
+		Calendar date2Year = Calendar.getInstance();
+		date2Year.add(Calendar.YEAR, -2);
 
 		Person person19 = new Person("Tong", "Zhou1", date19Year.getTime());
-		Person person20 = new Person("Tong", "Zhou2", date20Year.getTime());
+		Person person21 = new Person("Tong", "Zhou2", date21Year.getTime());
 
-		DrivingLicence licence1year = DrivingLicence.getInstance(person20, date1Year.getTime(), true);
-		DrivingLicence licence0year = DrivingLicence.getInstance(person20, date0Year.getTime(), true);
+		DrivingLicence licence2year = DrivingLicence.getInstance(person21, date2Year.getTime(), true);
+		DrivingLicence licence0year = DrivingLicence.getInstance(person21, date0Year.getTime(), true);
 
 		// To rent a small car, they must be at least 20 years old and must have held
 		// their licence for at least 1 year
 		assertFalse(carRentalCompany.issueCar(person19, licence0year, TypeOfCar.SMALL_CAR));
-		assertFalse(carRentalCompany.issueCar(person19, licence1year, TypeOfCar.SMALL_CAR));
-		assertFalse(carRentalCompany.issueCar(person20, licence0year, TypeOfCar.SMALL_CAR));
-		assertTrue(carRentalCompany.issueCar(person20, licence1year, TypeOfCar.SMALL_CAR));
+		assertFalse(carRentalCompany.issueCar(person19, licence2year, TypeOfCar.SMALL_CAR));
+		assertFalse(carRentalCompany.issueCar(person21, licence0year, TypeOfCar.SMALL_CAR));
+		assertTrue(carRentalCompany.issueCar(person21, licence2year, TypeOfCar.SMALL_CAR));
 	}
 
 	/**
@@ -141,23 +156,28 @@ public class CarRentalCompanyTest {
 	public void testIssueCarUnsatisfyLargeCar() {
 		CarRentalCompany carRentalCompany = new CarRentalCompany();
 		carRentalCompany.initializeCarFleet();
-		Calendar date24Year = new GregorianCalendar(1994, 9, 20);
-		Calendar date25Year = new GregorianCalendar(1993, 9, 20);
-		Calendar date5Year = new GregorianCalendar(2013, 9, 20);
-		Calendar date4Year = new GregorianCalendar(2014, 9, 20);
+
+		Calendar date24Year = Calendar.getInstance();
+		date24Year.add(Calendar.YEAR, -24);
+		Calendar date26Year = Calendar.getInstance();
+		date26Year.add(Calendar.YEAR, -26);
+		Calendar date4Year = Calendar.getInstance();
+		date4Year.add(Calendar.YEAR, -4);
+		Calendar date6Year = Calendar.getInstance();
+		date6Year.add(Calendar.YEAR, -6);
 
 		Person person24 = new Person("Tong", "Zhou1", date24Year.getTime());
-		Person person25 = new Person("Tong", "Zhou2", date25Year.getTime());
+		Person person26 = new Person("Tong", "Zhou2", date26Year.getTime());
 
-		DrivingLicence licence5year = DrivingLicence.getInstance(person25, date5Year.getTime(), true);
-		DrivingLicence licence4year = DrivingLicence.getInstance(person25, date4Year.getTime(), true);
+		DrivingLicence licence6year = DrivingLicence.getInstance(person26, date6Year.getTime(), true);
+		DrivingLicence licence4year = DrivingLicence.getInstance(person26, date4Year.getTime(), true);
 
 		// To rent a large car, they must be at least 25 years old and must have held
 		// their licence for at least 5 years
 		assertFalse(carRentalCompany.issueCar(person24, licence4year, TypeOfCar.LARGE_CAR));
-		assertFalse(carRentalCompany.issueCar(person24, licence5year, TypeOfCar.LARGE_CAR));
-		assertFalse(carRentalCompany.issueCar(person25, licence4year, TypeOfCar.LARGE_CAR));
-		assertTrue(carRentalCompany.issueCar(person25, licence5year, TypeOfCar.LARGE_CAR));
+		assertFalse(carRentalCompany.issueCar(person24, licence6year, TypeOfCar.LARGE_CAR));
+		assertFalse(carRentalCompany.issueCar(person26, licence4year, TypeOfCar.LARGE_CAR));
+		assertTrue(carRentalCompany.issueCar(person26, licence6year, TypeOfCar.LARGE_CAR));
 	}
 
 	/**
